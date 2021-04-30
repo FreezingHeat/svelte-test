@@ -1,9 +1,8 @@
 module.exports = (req, res) => {
-  console.log(req);
   // const date = new Date().toString();
   req.status(200).json({
-      ips: req.ips,
-      ip: req.ip,
+      ips: req.getHeader("X-FORWARDED-FOR") || req.getHeader("x-forwarded-for")
+      ip: req.getHeader("x-real-ip") || req.getHeader("X-REAL-IP") ,
       localAddress: req.localAddress
   });
 };
