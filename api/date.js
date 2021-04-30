@@ -1,4 +1,9 @@
 module.exports = (req, res) => {
+  console.log(req);
   // const date = new Date().toString();
-  res.status(200).json(req)
+  req.status(200).json({
+      ips: req.ips,
+      ip: req.ip,
+      localAddress: req.localAddress
+  });
 };
